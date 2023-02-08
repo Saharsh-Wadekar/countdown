@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+body{
+    background: transparent;
+    display:list-item;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0c1022;
+}
+.mainpage{
+    display: flex;
+}
+.mainpage{
+    justify-content: center;
+    align-items: center;
+    margin: 30vh 0 30vh 0;
+}
+body section div {
+    align-items: center;
+    justify-content: center;
+    display:-webkit-inline-box;
+    margin-left: 6%;
+}
+.box{
+    position: relative;
+    width: 190px;
+    height: 290px;
+    background: rgba(0, 0, 0, 0.75); 
+    border-radius: 20px;
+    display: -webkit-inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-image: conic-gradient(transparent,transparent,transparent,#d400d4);
+    animation: animate 4s linear infinite;
+    animation-delay: -2s;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-image: conic-gradient(transparent,transparent,transparent,#00ccff);
+    animation: animate 4s linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+.box span
+{
+    /* position: absolute; */
+    inset: 5px ;
+    background-color: #0c1022;
+    border-radius: 16px;
+    font-size: 10em;
+    z-index: 1;
+}
+
+h2 {
+    display: contents;
+    /* position: absolute; */
+    margin: 13px 0 0 9px;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    z-index: 1;
+    font-size: 1em;
+    color: #f5f5f5;
+}
+
+h5 {
+    display: content;
+    /* position: absolute; */
+    margin: 59px 0 0 36px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-direction: column; */
+    z-index: 1;
+    font-size: 30px;
+    color: #f5f5f5;
+}
