@@ -1,122 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technex Hacakthon'23 Countdown Timer</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="mainpage timerbackground">
-      <div class="box">
-        <span
-          ><h2 class="countdown" id="hours">00</h2>
-          <h5 >HOURS</h5></span
-        >
-      </div>
-      <div class="box">
-        <span
-          ><h2 class="countdown" id="minutes">00</h2>
-          <h5>MINUTES</h5></span
-        >
-      </div>
-      <div class="box">
-        <span
-          ><h2 class="countdown" id="seconds">00</h2>
-          <h5>SECONDS</h5></span
-        >
-        >
-      </div>
-      <!-- <button id="reset">Reset</button> -->
-      <!-- <div class="box">
-        <span><h2>00</h2><h5>HOURS</h5></span>
-    </div> -->
-</section>
-<section> <button id="start">Start</button></section>
-   
-      <script>
-              
-        // // Set the date we're counting down to
-        // var countDownDate = new Date();
-        // countDownDate.setHours(countDownDate.getHours() + 24);
+    <img src="background.svg" id="myimage" alt="background">
+    <div id="countdown">
+        <div class="box"><span id="hours"></span><a href="#">Hours</a></div>
+        <div class="box"><span id="minutes"></span><a href="#">Minutes</a></div>
+        <div class="box"><span id="seconds"></span><a href="#">Seconds</a></div>
+    </div>
+    <!-- Javascript -->
+    <script>
+      var x;
 
-        // // Update the count down every 1 second
-        // var x = setInterval(function () {
-        //   // Get today's date and time
-        //   var now = new Date().getTime();
+      // Set the date we're counting down from
+      var countDownDate = new Date("Feb 10, 2023 10:00:00").getTime();
 
-        //   // Find the distance between now and the count down date
-        //   var distance = countDownDate - now;
+      // Update the count down every 1 second
+      x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime();
 
-        //   // Time calculations for hours, minutes and seconds
-        //   var hours = Math.floor(
-        //     (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        //   );
-        //   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        //   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
 
-        //   // Display the result in the element with id="countdown"
-        //   document.getElementById("hours").innerHTML = hours ;
-        //   document.getElementById("minutes").innerHTML = minutes ;
-        //   document.getElementById("seconds").innerHTML = seconds  ;
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        //   // If the count down is finished, write some text
-        //   if (distance < 0) {
-        //     clearInterval(x);
-        //     document.getElementById("countdown").innerHTML = "EXPIRED";
-        //   }
-        // }, 1000);
+        // Add leading zeros to hours, minutes, and seconds if they are less than 10
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        var x;
-        var started = false;
+        // Display the result in the element with id="countdown"
+        document.getElementById("hours").innerHTML = hours ;
+        document.getElementById("minutes").innerHTML = minutes ;
+        document.getElementById("seconds").innerHTML = seconds;
 
-        function startTimer() {
-          if (started) return;
-
-          started = true;
-          // Set the date we're counting down to
-          var countDownDate = new Date();
-          countDownDate.setHours(countDownDate.getHours() + 24);
-
-          // Update the count down every 1 second
-          x = setInterval(function () {
-            // Get today's date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-
-            // Time calculations for hours, minutes and seconds
-            var hours = Math.floor(
-              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            var minutes = Math.floor(
-              (distance % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="countdown"
-            document.getElementById("hours").innerHTML = hours ;
-            document.getElementById("minutes").innerHTML = minutes ;
-            document.getElementById("seconds").innerHTML = seconds ;
-
-            // If the count down is finished, write some text
-            if (distance < 0) {
-              clearInterval(x);
-              document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-          }, 1000);
-        }
-
-        document.getElementById("start").addEventListener("click", startTimer);
-
-        document.getElementById("reset").addEventListener("click", function () {
+        // If the count down is finished, write some text
+        if (distance < 0) {
           clearInterval(x);
-          started = false;
-          startTimer();
-        });
-      </script>
-    
+          document.getElementById("countdown").innerHTML = "<span style='font-size:3em;font-family: 'JetBrains Mono', monospace;'><h2>Time's Up</h2></span>";
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
